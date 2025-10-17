@@ -1,7 +1,7 @@
 """
 File: Hacker.py
 Description: <A brief description of this Python module.>
-Author: <full name>
+Author: Patrick Williams
 ID: <student_id>
 Username: <username>
 This is my own work as defined by the University's Academic Misconduct Policy.
