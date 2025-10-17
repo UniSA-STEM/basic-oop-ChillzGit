@@ -26,7 +26,7 @@ class Rig:
     based on the damage and upgrade level.
     """
     def get_condition(self):
-        if self.__damage >= 2:
+        if self.__broken or self.__damage >= 2:
             condition = "Broken"
         elif self.__damage == 1:
             condition = "Damaged"
@@ -65,7 +65,11 @@ class Rig:
             self.__storage.append(asset)
 
     def release_asset(self, asset_name):
-        self.__storage.remove(asset_name)
+        for asset in self.__storage:
+            if asset.name.lower() == asset_name.lower():
+                self.__storage.remove(asset)
+                return asset
+        return None
 
 
     def __str__(self):
@@ -78,5 +82,5 @@ class Rig:
         else:
             asset_name = asset_name[:-2]
 
-        return f"{self.__name} | {condition} | Storage: {asset_name}"
+        return f"{self.__name}\nCondition: {condition}\nStorage: {asset_name}"
 
