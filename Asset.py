@@ -1,18 +1,14 @@
 """
 File: Asset.py
-Description: <A brief description of this Python module.>
+Description: This class represents a digital asset that also includes a capability
+of encryption. An asset contains a name, description and
+whether or not the asset is encrypted.
 Author: Patrick Williams
-ID: <student_id>
-Username: <username>
+ID: 110465151
+Username: wilpy031
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 
-
-"""
-This class represents a digital asset that also includes a capability
-of encryption. An asset contains a name, description and
-whether or not the asset is encrypted.
-"""
 class Asset:
     def __init__(self, name, description, encrypted=False):
         self.__name = name
@@ -21,8 +17,8 @@ class Asset:
 
     def __str__(self):
         if self.__encrypted:
-            return f"{self.__name}:{self.__description}[Encrypted]"
-        return f"{self.__name}:{self.__description}"
+            return f"{self.__name}: {self.__description} [Encrypted]"
+        return f"{self.__name}: {self.__description}"
 
     def get_name(self):
         return self.__name
@@ -39,3 +35,6 @@ class Asset:
     def set_encrypted(self, encrypted):
         self.__encrypted = encrypted
 
+    encrypted = property(get_encrypted, set_encrypted) #type: ignore
+    description = property(get_description, set_description)  #type: ignore
+    name = property(get_name) #type: ignore
