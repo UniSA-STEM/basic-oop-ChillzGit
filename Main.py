@@ -12,4 +12,5 @@ from Rig import Rig
 from Asset import Asset
 
 patrick = Rig("Patrick")
-print(patrick)
+hacker = Hacker("Hacking")
+

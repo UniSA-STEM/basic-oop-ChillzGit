@@ -35,6 +35,12 @@ class Rig:
 
         return f"{condition} (Level {self.__upgrade_level})"
 
+    """
+    This method takes a hit and incurs damage onto
+    the rig. There are some rules depending on the upgrade
+    level of the rig. Initially, the threshold is 2, and
+    if a rig takes 2 damage, the rig will become broken.
+    """
     def take_hit(self):
         damage = 1
         if self.__upgrade_level == 0:
@@ -71,6 +77,24 @@ class Rig:
                 return asset
         return None
 
+    def get_asset(self, asset_name):
+        for asset in self.__storage:
+            if asset.get_name() == asset_name:
+                return asset
+        return None
+
+    def del_asset(self, asset_name):
+        for asset in self.__storage:
+            if asset.get_name() == asset_name:
+                self.__storage.remove(asset)
+                return asset
+        return None
+
+    def get_storage(self):
+        return self.__storage
+
+    def is_broken(self):
+        return self.__broken
 
     def __str__(self):
         condition = self.get_condition()
