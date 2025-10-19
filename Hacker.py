@@ -1,9 +1,9 @@
 """
 File: Hacker.py
-Description: <A brief description of this Python module.>
+Description: Hacker class which interacts with Rig and Asset objects
 Author: Patrick Williams
-ID: <student_id>
-Username: <username>
+ID: 110465151
+Username: wilpy031
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
@@ -63,6 +63,7 @@ class Hacker:
         self.__trace += 1
         print(f"{self.__name} launched a Data Spike at {target_rig.get_name()}! (Trace: {self.__trace})")
         print(f"Target rig condition: {target_rig.get_condition()}")
+        return
 
     def encrypt_asset(self, asset_name):
         if not self.__rig:
@@ -102,7 +103,7 @@ class Hacker:
         if chip:
             self.__inventory.remove(chip)
         else:
-            self.__rig.del_asset("Security Chip")
+            chip = self.__rig.del_asset("Security Chip")
         if not chip:
             print(f"Failed to decrypt asset {asset_name}! No security chip found!")
             return

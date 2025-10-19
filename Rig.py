@@ -2,8 +2,8 @@
 File: Rig.py
 Description: Rig Class that represents a Rig Object which can store assets, take damage and be upgraded.
 Author: Patrick Williams
-ID: <student_id>
-Username: <username>
+ID: 110465151
+Username: wilpy031
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
@@ -58,31 +58,49 @@ class Rig:
 
         self.__damage = new_damage
 
+    """
+    This method will repair the rig and
+    set damage to 0.
+    """
     def repair(self):
         if self.__broken:
             self.__broken = False
         self.__damage = 0
 
+    """
+    This method will upgrade the rig
+    by plus 1
+    """
     def upgrade(self):
         self.__upgrade_level += 1
 
+
+    """
+    The method will store an asset
+    if the asset is not encrypted.
+    """
     def store_asset(self, asset):
         if not asset.encrypted:
             self.__storage.append(asset)
 
-    def release_asset(self, asset_name):
-        for asset in self.__storage:
-            if asset.name.lower() == asset_name.lower():
-                self.__storage.remove(asset)
-                return asset
-        return None
 
+    """
+    This method will check if asset
+    is in storage and if it is,
+    will return the asset.
+    """
     def get_asset(self, asset_name):
         for asset in self.__storage:
             if asset.get_name() == asset_name:
                 return asset
         return None
 
+
+    """
+    This method will check if asset
+    is in storage and if it is, will
+    delete the asset and return it.
+    """
     def del_asset(self, asset_name):
         for asset in self.__storage:
             if asset.get_name() == asset_name:
@@ -90,12 +108,28 @@ class Rig:
                 return asset
         return None
 
+
+    """
+    This method will return the storage
+    in the rig.
+    """
     def get_storage(self):
         return self.__storage
 
+    """
+    This method will return either
+    True or False depending if the 
+    rig is broken or not.
+    """
     def is_broken(self):
         return self.__broken
 
+
+    """
+    String conversion method that prints 
+    the rigs name, condition, upgrade level
+    and stored assets.
+    """
     def __str__(self):
         condition = self.get_condition()
         asset_name = ""
@@ -106,5 +140,5 @@ class Rig:
         else:
             asset_name = asset_name[:-2]
 
-        return f"{self.__name}\nCondition: {condition}\nStorage: {asset_name}"
+        return f"{self.__name}\nCondition: {condition}\nUpgrade Level: {self.__upgrade_level}\nStorage: {asset_name}"
 
