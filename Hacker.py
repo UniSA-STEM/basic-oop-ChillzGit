@@ -26,7 +26,7 @@ class Hacker:
         self.__name = name
         self.__trace = 0
         self.__rig = None
-        self.__inventory = [Asset("CryptoToken", "TBD")]
+        self.__inventory = [Asset("CryptoToken", "Used to acquire or repair rigs")]
 
     def acquire_rig(self, rig_name):
         """
@@ -366,7 +366,7 @@ class Hacker:
         the hacker's inventory.
         """
         if not self.__inventory:
-            return "Empty Inventory!"
+            return "Empty Inventory!\n"
         inventory = ""
         for asset in self.__inventory:
             inventory += str(asset) + "\n"
